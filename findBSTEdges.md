@@ -39,7 +39,7 @@ const binarySearchTree = {
 
 `calcDistance(binarySearchTree, 2, 6) => 2`
 
-Solution:
+Rough Draft Solution:
 
 ```js
 function calcDistance(tree, num1, num2) {
