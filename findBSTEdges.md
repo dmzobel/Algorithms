@@ -34,8 +34,8 @@ const binarySearchTree = {
           8
         /   \
        4     12
-     /  \      \
-    2    6      10
+     /  \    /
+    2    6  10
 
 `calcDistance(binarySearchTree, 2, 6) => 2`
 
@@ -49,7 +49,11 @@ function calcDistance(tree, num1, num2) {
   const min = Math.min(num1, num2);
   let currentNode = tree;
   while (currentNode.value) {
-    if (currentNode.value >= min && currentNode.value < max) {
+    if (currentNode.value === min) {
+      return findEdges(currentNode.right, max);
+    } else if (currentNode.value === max) {
+      return findEdges(currentNode.left, min);
+    } else if (currentNode.value > min && currentNode.value < max) {
       const rightEdges = findEdges(currentNode.right, max);
       const leftEdges = findEdges(currentNode.left, min);
       return rightEdges + leftEdges;
