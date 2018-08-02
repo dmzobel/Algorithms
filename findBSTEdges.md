@@ -1,3 +1,5 @@
+### Calculate the distance between 2 BST nodes
+
 Given a Binary Search Tree and two values that are in the tree,
 calculate the number of edges between the two values.
 
@@ -38,16 +40,17 @@ const binarySearchTree = {
     2    6  10
 
 `calcDistance(binarySearchTree, 2, 6) => 2`
+`calcDistance(binarySearchTree, 12, 10) => 1`
 
 Rough Draft Solution:
 
 ```js
 function calcDistance(tree, num1, num2) {
-  // check if root node is between the two nums or < or >
-  // need a right counter and left counter
+  // utilize the fact that it's a binary tree (i.e. sorted)
   const max = Math.max(num1, num2);
   const min = Math.min(num1, num2);
   let currentNode = tree;
+
   while (currentNode.value) {
     if (currentNode.value === min) {
       return findEdges(currentNode.right, max);
@@ -68,6 +71,7 @@ function calcDistance(tree, num1, num2) {
 function findEdges(tree, num) {
   let currentNode = tree;
   let counter = 0;
+
   while (currentNode.value) {
     if (currentNode.value === num) {
       return counter;
