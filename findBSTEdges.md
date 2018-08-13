@@ -70,7 +70,7 @@ function calcDistance(tree, num1, num2) {
 
 function findEdges(tree, num) {
   let currentNode = tree;
-  let counter = 0;
+  let counter = 1;
 
   while (currentNode.value) {
     if (currentNode.value === num) {
